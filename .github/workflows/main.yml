@@ -1,18 +1,16 @@
-name: My First CI Pipeline
+name: Docker Build CI
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  docker:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Show message
-        run: run: |
-  echo "Checking files..."
-  ls
+      - name: Build Docker Image
+        run: docker build -t my-nginx .
